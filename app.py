@@ -19,7 +19,8 @@ SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1aWCy6RQeCQbSx7wDlA0M-
 
 # Define Google Sheets credentials scope
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = Credentials.from_service_account_file("google_credentials.json", scopes=scope)
+creds_dict = st.secrets["google"]
+creds = Credentials.from_service_account_info(creds_dict, scopes=scope)
 client = gspread.authorize(creds)
 
 # Open the Google Sheet
